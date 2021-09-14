@@ -1,5 +1,6 @@
 //ACTION in redux
 const BUY_PHONE = 'BUY_PHONE';
+const BUY_TABLET = 'BUY_TABLET';
 
 function buyPhone(){
     return {
@@ -8,12 +9,20 @@ function buyPhone(){
     }
 }
 
+
+function buyTablet(){
+    return {
+        type: BUY_TABLET
+    }
+}
+
 //reducer
 //(prevState, action) => newState
 //let's create the initiale state
 
 const initialState = {
-    phone: 5
+    phone: 10,
+    tablet: 7
 }
 
 const reducer = (state = initialState,action) =>{
@@ -26,6 +35,12 @@ const reducer = (state = initialState,action) =>{
                 ...state,
                 phone: state.phone - 1
             }
+            case BUY_TABLET:
+                return{
+                    //spread operator "...". the value has to decrease
+                    ...state,
+                    tablet: state.tablet - 1
+                }
         default: return state
             
     }
@@ -40,13 +55,20 @@ const store = Redux.createStore(reducer);
 const phoneAvailable = document.getElementById('phoneAvailable');
 phoneAvailable.innerHTML = store.getState().phone;
 
-//second: dispatch method makes the dispatchof an action
+const tabletAvailable = document.getElementById('tabletAvailable');
+tabletAvailable.innerHTML = store.getState().tablet;
 
+//second: dispatch method makes the dispatchof an action
 document.getElementById('buy-phone').addEventListener('click', function(){
     store.dispatch(buyPhone());
 })
+document.getElementById('buy-tablet').addEventListener('click', function(){
+    store.dispatch(buyTablet());
+})
+
 
 //third:subscribe method which run for each modification in the store
 store.subscribe(() => {
     phoneAvailable.innerHTML = store.getState().phone;
+    tabletAvailable.innerHTML = store.getState().tablet;
 })
