@@ -17,9 +17,12 @@ img{
     justify-content: space-around;
     align-items: center;
     padding: 1.3rem;
+    margin: 20px;
 }
 button{
-    color: #000;
+    color: rgb(230, 230, 230);
+    background-color: #1b1b1b;
     border: none; padding: 10px;
+    width: 80%;
 }
 p{color: #000;}
