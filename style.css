@@ -7,10 +7,15 @@ body{
 img{
     width: 70px;
 }
-.phone-cell{
+.container{
+    display: flex;
+    padding: 20px;
+    background-color: rgb(235, 235, 235);
+}
+.cell{
     width: 200px;
     height: 200px;
-    color: #eee;
+    color: rgb(255, 255, 255);
     box-shadow: 1px 2px 13px rgb(179, 179, 179);
     display: flex;
     flex-direction: column;
